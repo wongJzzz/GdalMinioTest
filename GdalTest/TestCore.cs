@@ -13,15 +13,21 @@ namespace GdalTest
         public TestCore()
         {
             Console.WriteLine("TestCore");
-            Gdal.SetConfigOption("GDAL_FILENAME_IS_UTF8", "YES");
+
             Gdal.AllRegister();
-            Gdal.SetConfigOption("AWS_S3_ENDPOINT", "127.0.0.1:9000");
+
+            Gdal.SetConfigOption("AWS_HTTPS", "NO");
+            Gdal.SetConfigOption("GDAL_DISABLE_READDIR_ON_OPEN", "YES");
+            Gdal.SetConfigOption("AWS_VIRTUAL_HOSTING", "FALSE");
+            Gdal.SetConfigOption("AWS_S3_ENDPOINT", "localhost:9000");
             Gdal.SetConfigOption("AWS_SECRET_ACCESS_KEY", "minioadmin");
             Gdal.SetConfigOption("AWS_ACCESS_KEY_ID", "minioadmin");
-            Gdal.SetConfigOption("CPL_VSIL_USE_TEMP_FILE_FOR_RANDOM_WRITE", "YES");
+            
+
 
             string filePath = @"/vsis3/testbucket/dem.tif";
             Dataset ds = (Dataset)Gdal.Open(filePath, Access.GA_ReadOnly);
+            Console.WriteLine(ds);
 
         }
     }

@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="FieldDefnExtensions.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="GDAL" Version="3.5.0" />
     <PackageReference Include="System.Text.Encoding.CodePages" Version="6.0.0" />
   </ItemGroup>
